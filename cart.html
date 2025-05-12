@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <style>
+        /* Убираем отступы по краям */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        /* Контейнер на всю ширину */
+        .full-width-container {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* Изображение баннера — 100% ширины */
+        .banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .cart-container {
+            max-width: 800px;
+            margin: 50px auto;
+            font-family: Arial, sans-serif;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .cart-details {
+            flex-grow: 1;
+        }
+        .cart-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cart-actions button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        .cart-total {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+        .clear-cart {
+            background: crimson;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cart-container">
+    <h1>Ваша корзина</h1>
+    <div id="cart-items"></div>
+    <div class="cart-total">Общая сумма: <span id="cart-total">0.00</span> ₽</div>
+    <button class="clear-cart" id="clear-cart">Очистить корзину</button>
+    <a href="checkout.html"><button class="clear-cart">Оформить заказ</button>
+    </a>
+
+</div>
+
+<div id="payment"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalElement = document.getElementById('cart-total');
+        const clearBtn = document.getElementById('clear-cart');
+
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        function setCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function updateCartUI() {
+            const cart = getCart();
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Корзина пуста.</p>';
+                totalElement.textContent = '0.00';
+                updatePaymentButton(0);
+                return;
+            }
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+
+                itemDiv.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="cart-details">
+                        <h3>${item.name}</h3>
+                        <p>Цена: ${item.price} ₽</p>
+                        <p>Сумма: <strong>${itemTotal.toFixed(2)} ₽</strong></p>
+                    </div>
+                    <div class="cart-actions">
+                        <button class="decrease" data-id="${item.id}">−</button>
+                        <span>${item.quantity}</span>
+                        <button class="increase" data-id="${item.id}">+</button>
+                        <button class="remove" data-id="${item.id}">🗑️</button>
+                    </div>
+                `;
+
+                cartItemsContainer.appendChild(itemDiv);
+            });
+
+            totalElement.textContent = total.toFixed(2);
+            setCartHandlers();
+            updatePaymentButton(total.toFixed(2));
+        }
+
+        function setCartHandlers() {
+            document.querySelectorAll('.increase').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    changeQuantity(btn.dataset.id, 1);
+                });
+            });
+
+            document.querySelectorAll('.decrease').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    changeQuantity(btn.dataset.id, -1);
+                });
+            });
+
+            document.querySelectorAll('.remove').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    removeItem(btn.dataset.id);
+                });
+            });
+        }
+
+        function changeQuantity(id, delta) {
+            let cart = getCart();
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+                setCart(cart);
+                updateCartUI();
+            }
+        }
+
+        function removeItem(id) {
+            let cart = getCart();
+            cart = cart.filter(i => i.id !== id);
+            setCart(cart);
+            updateCartUI();
+        }
+
+        clearBtn.addEventListener('click', () => {
+            localStorage.removeItem('cart');
+            updateCartUI();
+        });
+
+        function updatePaymentButton(amount) {
+            const wallet = '4100118046050402';
+            const paymentDiv = document.getElementById('payment');
+            paymentDiv.innerHTML = '';
+
+            if (amount > 0) {
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=Оплата%20заказа&default-sum=${amount}&button-text=11&payment-type-choice=on&mobile-payment-type-choice=on&successURL=https://example.com/thankyou&quickpay=shop&account=${wallet}`;
+                iframe.width = '450';
+                iframe.height = '200';
+                iframe.frameBorder = '0';
+                iframe.allowTransparency = 'true';
+                iframe.scrolling = 'no';
+                paymentDiv.appendChild(iframe);
+            }
+        }
+
+        updateCartUI();
+    });
+</script>
+
+</body>
+</html>

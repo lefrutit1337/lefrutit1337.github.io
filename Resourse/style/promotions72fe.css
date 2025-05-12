@@ -1,0 +1,241 @@
+.promo {}
+
+.promo h2 {
+    margin-top: 50px;
+}
+
+.promo__title-box {
+    margin: 0 auto;
+    background: #f9f9f9;
+    float: none;
+    padding: 26px 30px 15px 30px;
+}
+
+.promo__title h1 {
+    margin: 11px 0px;
+    padding-bottom: 0px;
+}
+
+.promo__title {}
+
+.promo__pretitle {
+    margin: -7px 0 0;
+    padding: 0 0 11px;
+    color: #b6b5b5;
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+    line-height: 22px;
+}
+
+.promo__pretitle a {
+    color: #b6b5b5;
+}
+
+.promo__pretitle a:hover {
+    color: #ff5f00;
+}
+
+.promo__box {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    -ms-flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    flex-direction: row;
+}
+
+.promo__body {
+    padding-bottom: 30px;
+    width: 32.333333%;
+    overflow: hidden;
+    height: 100%;
+    margin: 10px 0.5%;
+    min-width: 250px;
+    min-height: 100%;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgb(81 92 98 / 10%);
+    -webkit-box-shadow: 0 0 15px rgb(81 92 98 / 10%);
+}
+
+
+
+.promo__body:hover .shine::before {
+    left: 100%;
+    opacity: 1;
+}
+
+.promo__body-img {
+    text-align: center;
+    vertical-align: middle;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo__body-img img {
+    position: relative;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 0;
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 70px;
+    line-height: 170px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    zoom: 1;
+    display: block;
+}
+
+.promo__body-title {
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding: 20px 0 22px;
+    height: 24px;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 6px;
+    color: #222;
+}
+
+.promo__modal {
+    position: fixed;
+    z-index: 3998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background: #9c9c9c52;
+    backdrop-filter: blur(1px);
+    cursor: default;
+}
+
+.promo__modal-body {
+    padding: 25px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 4000;
+}
+
+.promo__mpdal-title {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 35px;
+    font-weight: 900;
+}
+
+.close_modal {
+    background: #9c9c9c52;
+    backdrop-filter: blur(1px);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 3999;
+}
+
+.promo__modal-img {
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.promo__modal-img img {
+    width: 100%;
+}
+
+.promo__modal-description {
+    margin-top: 15px;
+}
+
+.close_modal.btn_modal {
+    display: none;
+}
+
+.promo_undefined {
+    display: flex;
+    font-size: 18pt;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+
+.in_home {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    color: #ffffff !important;
+    font-size: 16px;
+    line-height: 18px !important;
+    font-weight: normal;
+    text-transform: none;
+    text-decoration: none;
+    margin: 0;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 10px;
+    overflow: hidden;
+    transition: background-color .3s ease;
+    -moz-transition: background-color .3s ease;
+    -ms-transition: background-color .3s ease;
+    -o-transition: background-color .3s ease;
+    -webkit-transition: background-color .3s ease;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 1000px) {
+    .close_modal.btn_modal {
+        display: flex;
+        position: relative;
+        width: 150px;
+        height: 50px;
+        background: #ff5f00;
+        color: #fff;
+        cursor: pointer;
+        float: right;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 850px) and (min-width: 530px) {
+    .promo__body {
+        width: 49%;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .promo__body {
+        width: 100%;
+    }
+    .promo__mpdal-title {
+        font-size: 30px;
+    }
+}

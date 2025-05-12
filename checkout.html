@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Оформление заказа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f9f9f9;
+        }
+
+        .checkout-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="checkout-container">
+    <h2>Оформление заказа</h2>
+    <form id="checkout-form">
+        <label for="address">Адрес доставки:</label>
+        <textarea id="address" required></textarea>
+        <div id="address-error" class="error-message"></div>
+
+        <label for="phone">Номер телефона:</label>
+        <input type="tel" id="phone" required>
+        <div id="phone-error" class="error-message"></div>
+
+        <button type="submit">Подтвердить заказ</button>
+    </form>
+    <div id="confirmation" class="success-message" style="display: none;">
+        ✅ Заказ оформлен! Мы свяжемся с вами в ближайшее время.
+    </div>
+</div>
+
+<script>
+    document.getElementById('checkout-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const address = document.getElementById('address').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const addressError = document.getElementById('address-error');
+        const phoneError = document.getElementById('phone-error');
+
+        addressError.textContent = '';
+        phoneError.textContent = '';
+
+        let hasError = false;
+
+        // Проверка адреса на слово "Владимир"
+        if (!/владимир/i.test(address)) {
+            addressError.textContent = 'Доставка доступна только по городу Владимир.';
+            hasError = true;
+        }
+
+        // Проверка номера телефона
+        const phoneClean = phone.replace(/\D/g, '');
+        if (!/^7\d{10}$/.test(phoneClean) && !/^8\d{10}$/.test(phoneClean)) {
+            phoneError.textContent = 'Введите корректный российский номер телефона (начинается с +7 или 8).';
+            hasError = true;
+        }
+
+        if (hasError) return;
+
+        // Очистка корзины
+        localStorage.removeItem('cart');
+
+        // Показываем подтверждение
+        document.getElementById('checkout-form').style.display = 'none';
+        document.getElementById('confirmation').style.display = 'block';
+
+        // Можно отправить заказ в Telegram или на email здесь
+    });
+</script>
+</body>
+</html>

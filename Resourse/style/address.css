@@ -1,0 +1,186 @@
+.nameInput {
+  height: 40px;
+  width: 100%;
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 0 16px;
+  transition: border-color 0.2s ease, padding-left 0.1s;
+}
+
+.address-name {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.title-address {
+  font-size: 1.2em;
+  font-weight: 700;
+
+}
+
+.address-name input {
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: 700;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  border: 1px solid #D8D8D0;
+  width: 100%;
+  text-align: center;
+}
+
+.modal-content .disabled {}
+
+.textTitle {
+  margin: 10px 0;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+
+.searchAddress {
+  position: relative;
+  margin: 5px 0;
+}
+
+.searchAddress input {
+  width: 100%;
+  border: none;
+  -webkit-box-shadow: 0 0 5px 0 grey; /* Вендорный префикс для старых версий WebKit */
+  box-shadow: 0 0 5px 0 grey;
+  line-height: 1.5;
+  border-radius: 6px;
+  font-size: 1em;
+  padding: 5px;
+  min-height: 50px;
+
+}
+
+#address_list {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  background-color: #fff;
+
+  text-align: left;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  transform: translate(0, 101%);
+  -webkit-transform: translate(0, 101%);
+  -moz-transform: translate(0, 101%);
+  -ms-transform: translate(0, 101%);
+  -o-transform: translate(0, 101%);
+  max-height: 300%;
+  overflow: auto;
+}
+
+#address_list span {
+  margin: 3px 0;
+}
+
+.order_os-delivery-address {
+  margin: 15px 0;
+}
+
+.address-item {
+  margin: 5px 0;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.address-item label {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.address-item small {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  color: #999;
+}
+
+.order__os-input__box {
+  flex-basis: 47%;
+  margin-bottom: 15px;
+}
+
+.order__os-input__box label {
+  font-weight: 400;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.order__os-input__box input {
+  line-height: 20px;
+  background: #f7f7f7;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  box-shadow: none;
+  color: #383838;
+  height: auto;
+  font-size: 13px;
+  padding: 8px 13px 7px;
+  width: 100%;
+  outline: 0;
+}
+
+.intercomBox {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.intercomTitles {
+  width: 100%;
+  flex-basis: 100%;
+}
+.intercom-btn {
+  padding: 10px 15px;
+  margin: 0 10px;
+  width: 120px;
+  box-shadow: 0 0 2px 0 #c2c2c2;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.1s linear infinite;
+  -webkit-transition: all 0.1s linear infinite;
+  -moz-transition: all 0.1s linear infinite;
+  -ms-transition: all 0.1s linear infinite;
+  -o-transition: all 0.1s linear infinite;
+}
+.intercom-btn:hover {
+  box-shadow: 0 0 5px 0 #c2c2c2;
+  background-color: #c2c2c2;
+}
+.modal-content .btn-setType {
+  margin: 5px 0px !important;
+}
+
+.title_address {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: red;
+}
+.btn-cancel {
+  width: 120px;
+  margin: 10px auto;
+  padding: 7px 20px;
+}
+.checkbox_house {
+  text-align: start;
+  margin: 10px 0;
+}
+#address_list label {
+  margin: 5px;
+}

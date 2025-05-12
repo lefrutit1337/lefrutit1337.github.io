@@ -1,0 +1,115 @@
+.delivery {
+    box-sizing: border-box;
+}
+
+.delivery h2 {
+    margin: 20px 0px 10px 10px;
+}
+
+.delivery p {
+    margin: 10px;
+}
+
+.delivery__title-box {
+    margin: 0 auto;
+    background: #f9f9f9;
+    float: none;
+    padding: 26px 30px 15px 30px;
+}
+
+.delivery__title h1 {
+    margin: 11px 0px;
+    padding-bottom: 0px;
+}
+
+.delivery__pretitle {
+    margin: -7px 0 0;
+    padding: 0 0 11px;
+    color: #b6b5b5;
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+    line-height: 22px;
+}
+
+.delivery__pretitle a {
+    color: #b6b5b5;
+}
+
+
+
+.delivery__points {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-right: -20px;
+}
+
+.delivery__point {
+    box-shadow: 0 0 10px 0 #ddd;
+    border-radius: 4px;
+    background: #fff;
+    margin-bottom: 15px;
+    flex-grow: 1;
+    margin-right: 20px;
+    padding: 15px;
+}
+
+.delivery__point-box {}
+
+.delivery__point-name {
+    font-size: 19px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.delivery__point-table {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.delivery__point-teble-head {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.delivery__point-teble-head span {
+    flex-grow: 1;
+    margin: 5px 0 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.delivery__point-teble-body {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.delivery__point-teble-body div {
+    display: flex;
+    flex-direction: column;
+    margin: 3px;
+}
+
+.delivery__point-teble-body div span {
+    font-size: 14px;
+}
+
+.delivery__map {
+    min-height: 400px;
+}
+
+.site-delivery-phone {
+    position: relative;
+    margin: 4px 0 -3px 10px;
+    font-size: 1.0666em;
+    font-weight: 700;
+}
+.site-delivery-phone a {
+    color: black;
+}
